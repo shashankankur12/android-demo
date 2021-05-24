@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AndroidDemo</string>
+    <string name="content_description">imageView</string>
+    <string name="sign_in_info_message">Sign in by entering the details below.</string>
+    <string name="enter_employee_id_info_message">Employee ID</string>
+    <string name="enter_password_info_message">Password</string>
+    <string name="sign_in">Sign In</string>
+</resources>
