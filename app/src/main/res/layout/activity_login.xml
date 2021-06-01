@@ -11,132 +11,140 @@
 
     </data>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/rootLayout"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/mainRootLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        tools:context=".ui.login.LoginActivity">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/mainConstraintLayout"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/rootLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@android:color/white"
-            tools:context=".views.LoginActivity">
+            tools:context=".ui.login.LoginActivity">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layoutLogo"
-                android:layout_width="0dp"
+                android:id="@+id/mainConstraintLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:background="@android:color/white"
-                android:orientation="vertical"
-                android:padding="@dimen/_30sdp"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                tools:context=".views.LoginActivity">
 
-                <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="@dimen/_250sdp"
-                    android:layout_height="@dimen/_50sdp"
-                    android:src="@drawable/ic_splash_logo"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layoutLogo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="@android:color/white"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_30sdp"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:contentDescription="@string/content_description" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="@dimen/_250sdp"
-                    android:layout_height="@dimen/_120sdp"
-                    android:layout_marginTop="@dimen/_30sdp"
-                    android:src="@drawable/login_illustration"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView4"
-                    app:layout_constraintStart_toStartOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                    android:contentDescription="@string/content_description" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/imageView4"
+                        android:layout_width="@dimen/_250sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:src="@drawable/ic_splash_logo"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:contentDescription="@string/content_description" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/white"
-                android:orientation="vertical"
-                android:paddingVertical="@dimen/_16ssp"
-                android:paddingHorizontal="@dimen/_30sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/layoutLogo">
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="@dimen/_250sdp"
+                        android:layout_height="@dimen/_120sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:src="@drawable/login_illustration"
+                        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+                        app:layout_constraintStart_toStartOf="@+id/imageView4"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                        android:contentDescription="@string/content_description" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sign_in_info_message"
-                    android:textColor="@android:color/black"
-                    android:visibility="gone"
-                    android:textSize="@dimen/_12ssp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:text="@={viewModelLogin.userId}"
-                    android:id="@+id/editTextEmployeeId"
-                    style="@style/loginEditTextTheme"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:hint="@string/enter_employee_id_info_message"
-                    android:inputType="textPersonName|textCapCharacters"
-                    android:importantForAutofill="no" />
-
-                <com.google.android.material.textfield.TextInputLayout
+                <LinearLayout
+                    android:id="@+id/linearLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    app:hintEnabled="false"
-                    app:passwordToggleEnabled="true">
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:orientation="vertical"
+                    android:paddingVertical="@dimen/_16ssp"
+                    android:paddingHorizontal="@dimen/_30sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/layoutLogo">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sign_in_info_message"
+                        android:textColor="@android:color/black"
+                        android:visibility="gone"
+                        android:textSize="@dimen/_12ssp"
+                        android:textStyle="bold" />
 
                     <EditText
-                        android:text="@={viewModelLogin.password}"
-                        android:id="@+id/editTextPassword"
+                        android:text="@={viewModelLogin.userId}"
+                        android:id="@+id/editTextEmployeeId"
                         style="@style/loginEditTextTheme"
-                        android:hint="@string/enter_password_info_message"
-                        android:paddingStart="@dimen/_50sdp"
-                        android:paddingEnd="@dimen/_10sdp"
                         android:gravity="center"
-                        android:inputType="textPassword"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:hint="@string/enter_employee_id_info_message"
+                        android:inputType="textPersonName|textCapCharacters"
                         android:importantForAutofill="no" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        app:hintEnabled="false"
+                        app:passwordToggleEnabled="true">
 
-                <Button
-                    android:onClick="@{viewModelLogin::onSignInButtonClick}"
-                    android:id="@+id/buttonLogin"
-                    style="@style/positiveRoundButtonTheme"
+                        <EditText
+                            android:text="@={viewModelLogin.password}"
+                            android:id="@+id/editTextPassword"
+                            style="@style/loginEditTextTheme"
+                            android:hint="@string/enter_password_info_message"
+                            android:paddingStart="@dimen/_50sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:inputType="textPassword"
+                            android:importantForAutofill="no" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <Button
+                        android:onClick="@{viewModelLogin::onSignInButtonClick}"
+                        android:id="@+id/buttonLogin"
+                        style="@style/positiveRoundButtonTheme"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_25sdp"
+                        android:text="@string/sign_in" />
+
+                </LinearLayout>
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_25sdp"
-                    android:text="@string/sign_in" />
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:indeterminateTintMode="src_atop"
+                    android:indeterminateTint="@color/black"/>
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:indeterminateTintMode="src_atop"
-                android:indeterminateTint="@color/black"/>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.core.widget.NestedScrollView>
 </layout>
 
 
