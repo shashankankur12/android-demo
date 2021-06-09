@@ -28,7 +28,12 @@ class LoginViewModel (private val repository: UserRepository) : ViewModel() {
                     try {
                         val loginResponse= repository.userLogin(userId!!, password!!)
                         loginResponse?.data?.also {
+                            it.token?.let { token->
+                                repository.saveToken(token)
+                            }
+                            repository.saveUserInPref(it)
                             loginListener?.onSuccess(it)
+
                         } ?: run{
                             loginResponse?.let { loginListener?.onFailure(it.message) }
                         }

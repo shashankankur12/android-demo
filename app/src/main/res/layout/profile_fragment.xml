@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<data>
+    <variable
+        name="profileViewModel"
+        type="com.example.androiddemo.ui.profile.ProfileViewModel" />
+</data>
+    
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.profile.ProfileFragment">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/constraintLayout"
+            android:background="@android:color/white"
+            android:paddingTop="@dimen/_10ssp"
+            android:scrollbarStyle="outsideOverlay"
+            android:scrollbars="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/_12ssp"
+                android:paddingBottom="@dimen/_15sdp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewContact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:layout_constraintEnd_toStartOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:background="@android:drawable/divider_horizontal_bright"
+                            android:paddingHorizontal="@dimen/_10sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="Contact"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutPhoneNumber"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5ssp"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_5sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Phone : "
+                                android:textColor="@android:color/holo_red_light"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textViewPhoneNumber"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/_1sdp"
+                                android:text="@{profileViewModel.leadProfileData.phone}"
+                                android:textColor="@android:color/holo_blue_light"
+                                android:textSize="@dimen/_11ssp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutEmailAddress"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5ssp"
+                            android:layout_marginBottom="@dimen/_5ssp"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_5sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Email: "
+                                android:textColor="@android:color/holo_red_light"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textViewEmailAddress"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@{profileViewModel.leadProfileData.email}"
+                                android:paddingStart="@dimen/_1sdp"
+                                android:textColor="@android:color/holo_blue_light"
+                                android:textSize="@dimen/_11ssp" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewWorkIdentification"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10ssp"
+                    android:elevation="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewContact">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:background="@android:drawable/divider_horizontal_bright"
+                            android:paddingHorizontal="@dimen/_10sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="Work Identification "
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutEmployeeId"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5ssp"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_5sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Employee Id :"
+                                android:textColor="@android:color/holo_red_light"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textViewEmployeeId"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/_1sdp"
+                                android:text="@{profileViewModel.leadProfileData.employeeId}"
+                                android:textColor="@android:color/holo_blue_light"
+                                android:textSize="@dimen/_11ssp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5ssp"
+                            android:layout_marginBottom="@dimen/_5ssp"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_5sdp"
+                            android:weightSum="3">
+
+                            <LinearLayout
+                                android:id="@+id/layoutRole"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Role : "
+                                    android:textColor="@android:color/holo_red_light"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textViewRole"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingHorizontal="@dimen/_1sdp"
+                                    android:text="@{profileViewModel.leadProfileData.role}"
+                                    android:textColor="@android:color/holo_blue_light"
+                                    android:textSize="@dimen/_11ssp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layoutTitle"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Title : "
+                                    android:textColor="@android:color/holo_red_light"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textViewTitle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingHorizontal="@dimen/_1sdp"
+                                    android:text="@{profileViewModel.leadProfileData.title}"
+                                    android:textColor="@android:color/holo_blue_light"
+                                    android:textSize="@dimen/_11ssp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layoutDepartment"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Department"
+                                    android:textColor="@android:color/holo_red_light"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textViewDepartment"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{profileViewModel.leadProfileData.department}"
+                                    android:paddingHorizontal="@dimen/_1sdp"
+                                    android:textColor="@android:color/holo_blue_light"
+                                    android:textSize="@dimen/_11ssp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewWorkSchedule"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10ssp"
+                    android:elevation="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewWorkIdentification">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:background="@android:drawable/divider_horizontal_bright"
+                            android:paddingHorizontal="@dimen/_10sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="Work Schedule "
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutAvailability"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5ssp"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_5sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Avalibility :"
+                                android:textColor="@android:color/holo_red_light"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textViewAvailability"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingHorizontal="@dimen/_1sdp"
+                                android:textColor="@android:color/holo_blue_light"
+                                android:textSize="@dimen/_11ssp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5ssp"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_5sdp"
+                            android:weightSum="2">
+
+                            <LinearLayout
+                                android:id="@+id/layoutShift"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/layoutShiftHours"
+                                app:layout_constraintTop_toBottomOf="@+id/layoutPhoneNumber">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Shift :"
+                                    android:textColor="@android:color/holo_red_light"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textViewShift"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingHorizontal="@dimen/_1sdp"
+                                    android:text="@{profileViewModel.leadProfileData.shift}"
+                                    android:textColor="@android:color/holo_blue_light"
+                                    android:textSize="@dimen/_11ssp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layoutShiftHours"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                app:layout_constraintEnd_toStartOf="@id/layoutShift"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/layoutPhoneNumber">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Shift Hours :"
+                                    android:textColor="@android:color/holo_red_light"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textViewShiftHours"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingHorizontal="@dimen/_1sdp"
+                                    android:text="@{profileViewModel.leadProfileData.shiftHours}"
+                                    android:textColor="@android:color/holo_blue_light"
+                                    android:textSize="@dimen/_11ssp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutScheduleNoteHeader"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5ssp"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_5sdp">
+
+                            <TextView
+                                android:id="@+id/textViewScheduleNote"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Schedule Note :"
+                                android:textColor="@android:color/holo_red_light"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/layoutScheduleNote"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingHorizontal="@dimen/_1sdp"
+                                android:text="@{profileViewModel.leadProfileData.scheduleNotes}"
+                                android:textColor="@android:color/holo_blue_light"
+                                android:textSize="@dimen/_11ssp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewWorkLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10ssp"
+                    android:layout_marginBottom="@dimen/_10ssp"
+                    android:elevation="@dimen/_5sdp"
+                    app:cardCornerRadius="@dimen/_7sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewWorkSchedule">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_30sdp"
+                            android:background="@android:drawable/divider_horizontal_bright"
+                            android:paddingHorizontal="@dimen/_10sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:text="Work Location"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutCustomerName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5ssp"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_5sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Customer Name :"
+                                android:textColor="@android:color/holo_red_light"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textViewCustomerName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/_1sdp"
+                                android:textColor="@android:color/holo_blue_light"
+                                android:textSize="@dimen/_11ssp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layoutBuildingName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5ssp"
+                            android:layout_marginBottom="@dimen/_5ssp"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_5sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Building Name"
+                                android:textColor="@android:color/holo_red_light"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/textViewBuildingName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/_1sdp"
+                                android:textColor="@android:color/holo_blue_light"
+                                android:textSize="@dimen/_11ssp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
+</layout>
+

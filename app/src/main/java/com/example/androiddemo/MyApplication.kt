@@ -3,7 +3,10 @@ package com.example.androiddemo
 import android.app.Application
 import com.example.androiddemo.data.network.ApiInterFace
 import com.example.androiddemo.data.network.NetworkConnectionInterceptor
+import com.example.androiddemo.data.network.SharedPref
+import com.example.androiddemo.data.reopsitories.ProfileRepository
 import com.example.androiddemo.data.reopsitories.UserRepository
+import com.example.androiddemo.ui.profile.ProfileViewModelFactory
 import com.example.androiddemo.viewModelfactory.login.LoginViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
@@ -20,8 +23,11 @@ class MyApplication :Application(), KodeinAware {
 
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind() from singleton { ApiInterFace(instance()) }
-        bind() from singleton { UserRepository(instance()) }
+        bind() from singleton { SharedPref(instance()) }
+        bind() from singleton { UserRepository(instance(), instance()) }
         bind() from provider { LoginViewModelFactory(instance()) }
+        bind() from singleton { ProfileRepository(instance(), instance()) }
+        bind() from provider { ProfileViewModelFactory(instance()) }
     }
 
 

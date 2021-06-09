@@ -5,4 +5,6 @@
     <string name="enter_employee_id_info_message">Employee ID</string>
     <string name="enter_password_info_message">Password</string>
     <string name="sign_in">Sign In</string>
+    <string name="home">Home</string>
+    <string name="lumper_list">Lumper List</string>
 </resources>

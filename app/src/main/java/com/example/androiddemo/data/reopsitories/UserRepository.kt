@@ -2,14 +2,25 @@ package com.example.androiddemo.data.reopsitories
 
 import com.example.androiddemo.data.network.ApiInterFace
 import com.example.androiddemo.data.network.SafeApiRequest
+import com.example.androiddemo.data.network.SharedPref
 import com.example.androiddemo.data.responses.LoginResponse
+import com.example.androiddemo.data.responses.LoginUserData
 import com.example.androiddemo.model.LoginRequest
+import com.example.androiddemo.utils.AppConstant
 
-class UserRepository(private val api: ApiInterFace)  :SafeApiRequest(){
+class UserRepository(private val api: ApiInterFace , private val pref:SharedPref)  :SafeApiRequest(){
 
     suspend fun userLogin(userId: String, password: String): LoginResponse? {
-        val loginRequest = LoginRequest(userId, password, "eQZCHpD2QPiWyo6TRp6Oqo:APA91bE2BaMilunJI6gmLro6x_fbBfn6agwgUxpZbBNsV9498SS0ER-6jZoRtT4e8R5HbAD7LJb22BenJg4wW1DekGYrr0nPkZIWkN5mPx-WxTw89YlqOImq_JWL-BcYHhBzMUzX6-37")
+        val loginRequest = LoginRequest(userId, password, "cfu6Tm7WQEmdUJWDESOxHB:APA91bEKufluvQgwQnnJV8skdVwHF7M_9zZ96qz4UBkHTGprg92upqNbaFSwWf0xsCxA1CMVSgZ78ke5QhtvLf90Agc-Y1MvQ5XVSG6s3Q_6LpaY2DJiu87rIQNywWrW4aWhvyLwwIK0")
         return apiRequest { api.doLogin(loginRequest) }
+    }
+
+    fun saveToken(token: String) {
+        pref.setString(AppConstant.PREFERENCE_AUTH_TOKEN, token)
+    }
+
+    fun saveUserInPref(loginUserData: LoginUserData) {
+        pref.setClassObject(AppConstant.PREFERENCE_LEAD_PROFILE, loginUserData)
     }
 
 //    private fun getToken(): String {

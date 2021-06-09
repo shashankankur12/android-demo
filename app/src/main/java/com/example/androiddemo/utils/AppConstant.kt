@@ -6,5 +6,6 @@ interface AppConstant {
         //Shared Preference Keys
         const val PREFERENCE_NAME = "Demo_App"
         const val PREFERENCE_AUTH_TOKEN = "pref_auth_token"
+        const val PREFERENCE_LEAD_PROFILE = "pref_lead_profile"
     }
 }
