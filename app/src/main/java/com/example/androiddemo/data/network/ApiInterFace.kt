@@ -1,33 +1,30 @@
 package com.example.androiddemo.data.network
 
-import androidx.lifecycle.viewmodel.savedstate.R
-import com.example.androiddemo.data.responses.LoginResponse
-import com.example.androiddemo.model.LeadProfileAPIResponse
-import com.example.androiddemo.model.LoginRequest
+import com.example.androiddemo.data.responses.*
 import okhttp3.OkHttpClient
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiInterFace {
 
-    @POST("employees/lead/login")
-    suspend fun doLogin(@Body request: LoginRequest): Response<LoginResponse>
+    @POST("login")
+    suspend fun doLogin(@Body request: LoginRequest): Response<LoginUserData>
 
-    @GET("employees/me")
-    suspend fun getLeadProfile(@Header("Authorization") auth: String): Response<LeadProfileAPIResponse>
+    @GET("users/{id}")
+    suspend fun getLeadProfile(@Path("id") id: String): Response<LeadProfileAPIResponse>
+
+    @GET("users")
+    suspend fun getAllLumpersData(@Query("page") page :String): Response<UserList>
+
 
     companion object {
         operator fun invoke(networkConnectionInterceptor: NetworkConnectionInterceptor): ApiInterFace {
             val okHttpClient=OkHttpClient.Builder().addInterceptor(networkConnectionInterceptor).build()
             return Retrofit.Builder()
                 .client(okHttpClient)
-                    .baseUrl("https://dev.quickhands.api-build-release.com/v1/")
+                    .baseUrl("https://reqres.in/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(ApiInterFace::class.java)

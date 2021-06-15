@@ -4,10 +4,12 @@ import android.app.Application
 import com.example.androiddemo.data.network.ApiInterFace
 import com.example.androiddemo.data.network.NetworkConnectionInterceptor
 import com.example.androiddemo.data.network.SharedPref
+import com.example.androiddemo.data.reopsitories.LumperListRepository
 import com.example.androiddemo.data.reopsitories.ProfileRepository
 import com.example.androiddemo.data.reopsitories.UserRepository
+import com.example.androiddemo.ui.lumperList.LumperListViewModelFactory
 import com.example.androiddemo.ui.profile.ProfileViewModelFactory
-import com.example.androiddemo.viewModelfactory.login.LoginViewModelFactory
+import com.example.androiddemo.ui.login.LoginViewModelFactory
 import org.kodein.di.Kodein
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.androidXModule
@@ -28,6 +30,8 @@ class MyApplication :Application(), KodeinAware {
         bind() from provider { LoginViewModelFactory(instance()) }
         bind() from singleton { ProfileRepository(instance(), instance()) }
         bind() from provider { ProfileViewModelFactory(instance()) }
+        bind() from singleton { LumperListRepository(instance(), instance()) }
+        bind() from provider { LumperListViewModelFactory(instance()) }
     }
 
 

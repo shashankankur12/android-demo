@@ -11,4 +11,9 @@
         android:name="com.example.androiddemo.ui.profile.ProfileFragment"
         android:label="profile_fragment"
         tools:layout="@layout/profile_fragment" />
+    <fragment
+        android:id="@+id/lumperListFragment2"
+        android:name="com.example.androiddemo.ui.lumperList.LumperListFragment"
+        android:label="lumper_list_fragment"
+        tools:layout="@layout/lumper_list_fragment" />
 </navigation>

@@ -1,7 +1,6 @@
-package com.example.androiddemo.model
+package com.example.androiddemo.data.responses
 
 import android.os.Parcelable
-import com.example.androiddemo.data.responses.EmployeeData
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 

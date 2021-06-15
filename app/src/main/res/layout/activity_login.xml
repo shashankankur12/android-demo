@@ -7,7 +7,7 @@
     <data>
         <variable
             name="viewModelLogin"
-            type="com.example.androiddemo.viewmodel.login.LoginViewModel" />
+            type="com.example.androiddemo.ui.login.LoginViewModel" />
 
     </data>
 
@@ -94,7 +94,7 @@
                         android:gravity="center"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:hint="@string/enter_employee_id_info_message"
-                        android:inputType="textPersonName|textCapCharacters"
+                        android:inputType="textEmailAddress"
                         android:importantForAutofill="no" />
 
                     <com.google.android.material.textfield.TextInputLayout

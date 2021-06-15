@@ -5,15 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.example.androiddemo.R
 import com.example.androiddemo.data.responses.LoginUserData
 import com.example.androiddemo.databinding.ActivityLoginBinding
 import com.example.androiddemo.listner.login.LoginViewModelListener
 import com.example.androiddemo.ui.dashboard.DashBoardActivity
 import com.example.androiddemo.utils.snackbar
-import com.example.androiddemo.viewModelfactory.login.LoginViewModelFactory
-import com.example.androiddemo.viewmodel.login.LoginViewModel
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
@@ -29,7 +27,7 @@ class LoginActivity : AppCompatActivity(), LoginViewModelListener, KodeinAware {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this@LoginActivity, R.layout.activity_login)
-        viewModel = ViewModelProviders.of(this, factory).get(LoginViewModel::class.java)
+        viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
 
         binding.viewModelLogin = viewModel
         viewModel.loginListener = this
@@ -42,8 +40,8 @@ class LoginActivity : AppCompatActivity(), LoginViewModelListener, KodeinAware {
     override fun onSuccess(loginResponse: LoginUserData?) {
         loginResponse?.let {
             binding.progressBar.visibility = View.GONE
-            it.firstName?.let { it1 -> binding.mainRootLayout.snackbar(it1) }
-            var intent =Intent(this, DashBoardActivity::class.java)
+
+            val intent =Intent(this, DashBoardActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
         }

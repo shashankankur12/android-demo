@@ -1,12 +1,14 @@
-package com.example.androiddemo.viewmodel.login
+package com.example.androiddemo.ui.login
 
 import android.view.View
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.androiddemo.data.reopsitories.UserRepository
 import com.example.androiddemo.listner.login.LoginViewModelListener
 import com.example.androiddemo.utils.ApiExceptions
 import com.example.androiddemo.utils.Coroutines
 import com.example.androiddemo.utils.NoInternetException
+import kotlinx.coroutines.launch
 
 class LoginViewModel (private val repository: UserRepository) : ViewModel() {
     var userId: String? = null
@@ -24,18 +26,18 @@ class LoginViewModel (private val repository: UserRepository) : ViewModel() {
                 loginListener?.onFailure("Please enter Password")
             }
             else -> {
-                Coroutines.main {
+                viewModelScope.launch {
                     try {
                         val loginResponse= repository.userLogin(userId!!, password!!)
-                        loginResponse?.data?.also {
+                        loginResponse?.also {
                             it.token?.let { token->
                                 repository.saveToken(token)
                             }
-                            repository.saveUserInPref(it)
+//                            repository.saveUserInPref(it)
                             loginListener?.onSuccess(it)
 
                         } ?: run{
-                            loginResponse?.let { loginListener?.onFailure(it.message) }
+                            loginResponse?.let { loginListener?.onFailure("No user found") }
                         }
 
                     }catch (e:ApiExceptions){

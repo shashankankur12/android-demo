@@ -4,7 +4,7 @@
 <data>
     <variable
         name="profileViewModel"
-        type="com.example.androiddemo.ui.profile.ProfileViewModel" />
+        type="com.example.androiddemo.data.responses.LeadProfileAPIResponse" />
 </data>
     
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -71,7 +71,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Phone : "
+                                android:text="First Name : "
                                 android:textColor="@android:color/holo_red_light"
                                 android:textStyle="bold" />
 
@@ -80,7 +80,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="@dimen/_1sdp"
-                                android:text="@{profileViewModel.leadProfileData.phone}"
+                                android:text="@{profileViewModel.data.firstName}"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="@dimen/_11ssp" />
                         </LinearLayout>
@@ -98,7 +98,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Email: "
+                                android:text="Last Name: "
                                 android:textColor="@android:color/holo_red_light"
                                 android:textStyle="bold" />
 
@@ -106,7 +106,7 @@
                                 android:id="@+id/textViewEmailAddress"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@{profileViewModel.leadProfileData.email}"
+                                android:text="@{profileViewModel.data.lastName}"
                                 android:paddingStart="@dimen/_1sdp"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="@dimen/_11ssp" />
@@ -158,7 +158,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Employee Id :"
+                                android:text="Email :"
                                 android:textColor="@android:color/holo_red_light"
                                 android:textStyle="bold" />
 
@@ -167,7 +167,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="@dimen/_1sdp"
-                                android:text="@{profileViewModel.leadProfileData.employeeId}"
+                                android:text="@{profileViewModel.data.email}"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="@dimen/_11ssp" />
                         </LinearLayout>
@@ -201,7 +201,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingHorizontal="@dimen/_1sdp"
-                                    android:text="@{profileViewModel.leadProfileData.role}"
+                                    android:text="@{}"
                                     android:textColor="@android:color/holo_blue_light"
                                     android:textSize="@dimen/_11ssp" />
                             </LinearLayout>
@@ -225,7 +225,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingHorizontal="@dimen/_1sdp"
-                                    android:text="@{profileViewModel.leadProfileData.title}"
+                                    android:text="@{}"
                                     android:textColor="@android:color/holo_blue_light"
                                     android:textSize="@dimen/_11ssp" />
                             </LinearLayout>
@@ -248,7 +248,7 @@
                                     android:id="@+id/textViewDepartment"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{profileViewModel.leadProfileData.department}"
+                                    android:text="@{}"
                                     android:paddingHorizontal="@dimen/_1sdp"
                                     android:textColor="@android:color/holo_blue_light"
                                     android:textSize="@dimen/_11ssp" />
@@ -346,7 +346,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingHorizontal="@dimen/_1sdp"
-                                    android:text="@{profileViewModel.leadProfileData.shift}"
+                                    android:text="@{}"
                                     android:textColor="@android:color/holo_blue_light"
                                     android:textSize="@dimen/_11ssp" />
                             </LinearLayout>
@@ -373,7 +373,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingHorizontal="@dimen/_1sdp"
-                                    android:text="@{profileViewModel.leadProfileData.shiftHours}"
+                                    android:text="@{}"
                                     android:textColor="@android:color/holo_blue_light"
                                     android:textSize="@dimen/_11ssp" />
                             </LinearLayout>
@@ -403,7 +403,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingHorizontal="@dimen/_1sdp"
-                                android:text="@{profileViewModel.leadProfileData.scheduleNotes}"
+                                android:text="@{}"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="@dimen/_11ssp" />
 

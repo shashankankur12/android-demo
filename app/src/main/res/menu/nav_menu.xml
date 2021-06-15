@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/homeFragment"
-        android:title="@string/home" />
+        android:id="@+id/profileFragment"
+        android:title=  "@string/profile" />
 
     <item
-        android:id="@+id/lumperList"
+        android:id="@+id/lumperListFragment2"
         android:title="@string/lumper_list" />
 
 </menu>
