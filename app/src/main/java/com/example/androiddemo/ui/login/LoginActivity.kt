@@ -7,16 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.androiddemo.R
-import com.example.androiddemo.data.responses.LoginUserData
 import com.example.androiddemo.databinding.ActivityLoginBinding
-import com.example.androiddemo.listner.login.LoginViewModelListener
+import com.example.androiddemo.listner.login.ViewModelListener
 import com.example.androiddemo.ui.dashboard.DashBoardActivity
 import com.example.androiddemo.utils.snackbar
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.kodein
 import org.kodein.di.generic.instance
 
-class LoginActivity : AppCompatActivity(), LoginViewModelListener, KodeinAware {
+class LoginActivity : AppCompatActivity(), ViewModelListener, KodeinAware {
     override val kodein by kodein()
     private val factory: LoginViewModelFactory by instance()
 
@@ -37,18 +36,17 @@ class LoginActivity : AppCompatActivity(), LoginViewModelListener, KodeinAware {
         binding.progressBar.visibility = View.VISIBLE
     }
 
-    override fun onSuccess(loginResponse: LoginUserData?) {
+    override fun onSuccess(loginResponse: String?) {
+        binding.progressBar.visibility = View.GONE
         loginResponse?.let {
-            binding.progressBar.visibility = View.GONE
-
-            val intent =Intent(this, DashBoardActivity::class.java)
+            val intent = Intent(this, DashBoardActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             startActivity(intent)
         }
     }
 
-    override fun onFailure(message: String) {
+    override fun onFailure(message: String?) {
         binding.progressBar.visibility = View.GONE
-        binding.mainRootLayout.snackbar(message)
+        message?.let { binding.mainRootLayout.snackbar(it) }
     }
 }

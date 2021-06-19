@@ -8,8 +8,10 @@ import com.example.androiddemo.R
 import com.example.androiddemo.data.responses.Data
 import com.example.androiddemo.databinding.RecycelrviewLumperBinding
 
-class LumperListAdapter (private val lumperList :List <Data>) : RecyclerView.Adapter<LumperListAdapter.LumpersViewHolder>() {
+class LumperListAdapter :
+    RecyclerView.Adapter<LumperListAdapter.LumpersViewHolder>() {
 
+    private val lumperList: ArrayList<Data> = ArrayList()
     override fun getItemCount(): Int {
         return lumperList.size
     }
@@ -25,8 +27,16 @@ class LumperListAdapter (private val lumperList :List <Data>) : RecyclerView.Ada
         )
 
     override fun onBindViewHolder(holder: LumpersViewHolder, position: Int) {
-        holder.recycelrViewLumperBinding.lumper=lumperList[position]
+        holder.recycelrViewLumperBinding.lumper = lumperList[position]
     }
 
-    inner class LumpersViewHolder(val recycelrViewLumperBinding: RecycelrviewLumperBinding) :RecyclerView.ViewHolder(recycelrViewLumperBinding.root)
+    inner class LumpersViewHolder(val recycelrViewLumperBinding: RecycelrviewLumperBinding) :
+        RecyclerView.ViewHolder(recycelrViewLumperBinding.root)
+
+
+    fun updateArrayList(lumperDataList: List<Data>){
+        lumperList.clear()
+        lumperList.addAll(lumperDataList)
+        notifyDataSetChanged()
+    }
 }

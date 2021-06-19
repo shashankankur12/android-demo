@@ -1,12 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.lumperList.LumperListFragment">
+<layout>
+<data>
+    <variable
+        name="lumperFragment"
+        type="com.example.androiddemo.ui.lumperList.LumperListViewModel" />
+</data>
 
-   <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/recycler_view_lumper"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"/>
-</FrameLayout>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rootFrameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.lumperList.LumperListFragment">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_lumper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/black"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/noRecordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="No record found"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13sdp"
+            android:visibility="gone" />
+    </FrameLayout>
+</layout>

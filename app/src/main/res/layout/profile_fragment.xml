@@ -4,11 +4,12 @@
 <data>
     <variable
         name="profileViewModel"
-        type="com.example.androiddemo.data.responses.LeadProfileAPIResponse" />
+        type="com.example.androiddemo.data.responses.Data" />
 </data>
     
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
+        android:id="@+id/rootFrameLayout"
         android:layout_height="match_parent"
         tools:context=".ui.profile.ProfileFragment">
 
@@ -80,7 +81,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="@dimen/_1sdp"
-                                android:text="@{profileViewModel.data.firstName}"
+                                android:text="@{profileViewModel.firstName}"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="@dimen/_11ssp" />
                         </LinearLayout>
@@ -106,7 +107,7 @@
                                 android:id="@+id/textViewEmailAddress"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@{profileViewModel.data.lastName}"
+                                android:text="@{profileViewModel.lastName}"
                                 android:paddingStart="@dimen/_1sdp"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="@dimen/_11ssp" />
@@ -167,7 +168,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="@dimen/_1sdp"
-                                android:text="@{profileViewModel.data.email}"
+                                android:text="@{profileViewModel.email}"
                                 android:textColor="@android:color/holo_blue_light"
                                 android:textSize="@dimen/_11ssp" />
                         </LinearLayout>
@@ -498,6 +499,15 @@
                 </androidx.cardview.widget.CardView>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/black"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="gone" />
 
     </FrameLayout>
 </layout>
