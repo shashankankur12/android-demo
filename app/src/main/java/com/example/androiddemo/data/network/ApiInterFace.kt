@@ -21,7 +21,6 @@ interface ApiInterFace {
     @GET("users")
     suspend fun getAllLumpersData(@Query("page") page: String): Response<UserList>
 
-
     companion object {
         operator fun invoke(networkConnectionInterceptor: NetworkConnectionInterceptor): ApiInterFace {
             val okHttpClient =
@@ -34,5 +33,4 @@ interface ApiInterFace {
                 .create(ApiInterFace::class.java)
         }
     }
-
 }

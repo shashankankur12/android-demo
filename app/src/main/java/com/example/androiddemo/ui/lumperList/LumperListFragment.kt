@@ -11,14 +11,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.androiddemo.R
 import com.example.androiddemo.databinding.LumperListFragmentBinding
-import com.example.androiddemo.listner.login.ViewModelListener
+import com.example.androiddemo.utils.Resource
 import com.example.androiddemo.utils.snackbar
 import kotlinx.android.synthetic.main.lumper_list_fragment.*
 import org.kodein.di.KodeinAware
 import org.kodein.di.android.x.kodein
 import org.kodein.di.generic.instance
 
-class LumperListFragment : Fragment(), KodeinAware, ViewModelListener {
+class LumperListFragment : Fragment(), KodeinAware {
     override val kodein by kodein()
     private lateinit var viewModel: LumperListViewModel
     private val factory: LumperListViewModelFactory by instance()
@@ -29,7 +29,7 @@ class LumperListFragment : Fragment(), KodeinAware, ViewModelListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.lumper_list_fragment, container, false)
         viewModel = ViewModelProvider(this, factory).get(LumperListViewModel::class.java)
         return binding.root
@@ -37,41 +37,35 @@ class LumperListFragment : Fragment(), KodeinAware, ViewModelListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.lumperFragment = viewModel
+        setUpRecyclerView()
+        setDataObserver()
+    }
 
-//        viewModel = ViewModelProvider(this, factory).get(LumperListViewModel::class.java)
-        viewModel.viewModelListener = this
+    private fun setDataObserver() {
+        viewModel.getLumperList().observe(viewLifecycleOwner, Observer { lumperList ->
+            when (lumperList.status) {
+                Resource.Status.SUCCESS -> {
+                    progressBar.visibility = View.GONE
+                    lumperList.data?.let { lumperListAdapter.updateArrayList(it) }
+                }
+                Resource.Status.ERROR -> {
+                    progressBar.visibility = View.GONE
+                    lumperList.message?.let { rootFrameLayout.snackbar(it) }
+                }
+                Resource.Status.LOADING -> {
+                    progressBar.visibility = View.VISIBLE
+                }
+            }
+        })
+    }
 
+    private fun setUpRecyclerView() {
         binding.recyclerViewLumper.apply {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             lumperListAdapter = LumperListAdapter()
             adapter = lumperListAdapter
         }
-
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            val lumperList = viewModel.lumpersList
-        viewModel.getLumperList().observe(viewLifecycleOwner, Observer { lumperList ->
-            lumperListAdapter.updateArrayList(lumperList)
-        })
-//        }
-
-//        viewModel.getLumperList()
-    }
-
-    override fun onStarted() {
-        progressBar.visibility = View.VISIBLE
-    }
-
-    override fun onSuccess(loginResponse: String?) {
-        progressBar.visibility = View.GONE
-        noRecordText.visibility = View.GONE
-    }
-
-    override fun onFailure(message: String?) {
-        progressBar.visibility = View.GONE
-        noRecordText.visibility = View.VISIBLE
-        message?.let { rootFrameLayout.snackbar(it) }
     }
 
 }

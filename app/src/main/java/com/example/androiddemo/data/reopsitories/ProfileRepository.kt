@@ -1,16 +1,9 @@
 package com.example.androiddemo.data.reopsitories
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.androiddemo.data.network.ApiInterFace
 import com.example.androiddemo.data.network.SafeApiRequest
 import com.example.androiddemo.data.network.SharedPref
 import com.example.androiddemo.data.responses.LeadProfileAPIResponse
-import com.example.androiddemo.data.responses.LeadProfileData
-import com.example.androiddemo.data.responses.UserList
-import com.example.androiddemo.utils.AppConstant
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 class ProfileRepository(private val api: ApiInterFace, private val pref: SharedPref) :
     SafeApiRequest() {

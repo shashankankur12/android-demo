@@ -9,44 +9,39 @@ import com.example.androiddemo.data.responses.Data
 import com.example.androiddemo.listner.login.ViewModelListener
 import com.example.androiddemo.utils.ApiExceptions
 import com.example.androiddemo.utils.NoInternetException
+import com.example.androiddemo.utils.Resource
 import kotlinx.coroutines.launch
 
 class LumperListViewModel(private val repo: LumperListRepository) : ViewModel() {
-
-    internal val lumpersList: MutableLiveData<List<Data>> by lazy {
-        MutableLiveData<List<Data>>().also {
-            fetchLumpersList()
-        }
-    }
-    var viewModelListener: ViewModelListener? = null
+    private val lumpersList = MutableLiveData<Resource<List<Data>>>()
 
 //    val lumperList by lazyDeferred { repo.getLumperList() }
 
-    fun getLumperList():LiveData<List<Data>>{
+    fun getLumperList(): LiveData<Resource<List<Data>>> {
+        fetchLumpersList()
         return lumpersList
     }
-    fun fetchLumpersList() {
-        viewModelListener?.onStarted()
+
+    private fun fetchLumpersList() {
+        lumpersList.postValue(Resource.loading())
         viewModelScope.launch {
             try {
                 val response = repo.fetchAllLumperData()
                 response?.also {
                     if (!it.data.isNullOrEmpty()) {
-                        viewModelListener?.onSuccess("")
-                        lumpersList.postValue(it.data)
+                        lumpersList.postValue(Resource.success(it.data))
                     } else {
-                        viewModelListener?.onFailure("No record found")
+                        lumpersList.postValue(Resource.error("No record found"))
                     }
                 } ?: run {
-                    viewModelListener?.onFailure("No record found")
+                    lumpersList.postValue(Resource.error("No record found"))
                 }
             } catch (e: ApiExceptions) {
-                viewModelListener?.onFailure(e.message)
+                lumpersList.postValue(Resource.error(e.message))
             } catch (e: NoInternetException) {
-                viewModelListener?.onFailure(e.message)
+                lumpersList.postValue(Resource.error(e.message))
             }
-
-
         }
     }
+
 }
