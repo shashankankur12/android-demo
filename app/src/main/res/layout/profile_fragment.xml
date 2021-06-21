@@ -202,7 +202,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingHorizontal="@dimen/_1sdp"
-                                    android:text="@{}"
+                                    android:text=""
                                     android:textColor="@android:color/holo_blue_light"
                                     android:textSize="@dimen/_11ssp" />
                             </LinearLayout>
@@ -226,7 +226,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingHorizontal="@dimen/_1sdp"
-                                    android:text="@{}"
+                                    android:text=""
                                     android:textColor="@android:color/holo_blue_light"
                                     android:textSize="@dimen/_11ssp" />
                             </LinearLayout>
@@ -249,7 +249,7 @@
                                     android:id="@+id/textViewDepartment"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@{}"
+                                    android:text=""
                                     android:paddingHorizontal="@dimen/_1sdp"
                                     android:textColor="@android:color/holo_blue_light"
                                     android:textSize="@dimen/_11ssp" />
@@ -266,6 +266,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_10ssp"
                     android:elevation="@dimen/_5sdp"
+                    android:visibility="gone"
                     app:cardCornerRadius="@dimen/_7sdp"
                     app:layout_constraintTop_toBottomOf="@+id/cardViewWorkIdentification">
 
@@ -420,6 +421,7 @@
                     android:layout_marginTop="@dimen/_10ssp"
                     android:layout_marginBottom="@dimen/_10ssp"
                     android:elevation="@dimen/_5sdp"
+                    android:visibility="gone"
                     app:cardCornerRadius="@dimen/_7sdp"
                     app:layout_constraintTop_toBottomOf="@+id/cardViewWorkSchedule">
 

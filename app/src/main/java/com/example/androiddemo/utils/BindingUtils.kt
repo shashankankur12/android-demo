@@ -6,5 +6,5 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 @BindingAdapter("image")
 fun loadImage(view: CircleImageView, url: String) {
-    Glide.with(view).load(url).into(view)
+    url?.let {  Glide.with(view).load(url).into(view) }
 }
