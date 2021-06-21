@@ -42,7 +42,7 @@ class LumperListFragment : Fragment(), KodeinAware {
     }
 
     private fun setDataObserver() {
-        viewModel.getLumperList().observe(viewLifecycleOwner, Observer { lumperList ->
+        viewModel.getLumperList().observe(viewLifecycleOwner)  { lumperList ->
             when (lumperList.status) {
                 Resource.Status.SUCCESS -> {
                     progressBar.visibility = View.GONE
@@ -56,7 +56,7 @@ class LumperListFragment : Fragment(), KodeinAware {
                     progressBar.visibility = View.VISIBLE
                 }
             }
-        })
+        }
     }
 
     private fun setUpRecyclerView() {

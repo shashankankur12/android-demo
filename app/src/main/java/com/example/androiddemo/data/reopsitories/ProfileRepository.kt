@@ -19,25 +19,4 @@ class ProfileRepository(private val api: ApiInterFace, private val pref: SharedP
 //            LeadProfileData::class.java
 //        ) as LeadProfileData?
 //    }
-//
-//
-//    private val profileData = MutableLiveData<LeadProfileAPIResponse>()
-//
-//    suspend fun getLumperList(): LiveData<LeadProfileAPIResponse> {
-//        return withContext(Dispatchers.IO) {
-//            fetchLumperList()
-//            profileData
-//        }
-//    }
-//
-//    private suspend fun fetchLumperList() {
-//        val response = apiRequest {
-//            api.getLeadProfile("2")
-//        }
-//        var allList = LeadProfileAPIResponse()
-//        response?.let {
-//            allList = it
-//        }
-//        profileData.postValue(allList)
-//    }
 }
