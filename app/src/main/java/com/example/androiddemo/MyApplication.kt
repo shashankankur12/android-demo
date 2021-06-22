@@ -2,7 +2,7 @@ package com.example.androiddemo
 
 import android.app.Application
 import com.example.androiddemo.data.network.ApiInterFace
-import com.example.androiddemo.data.network.NetworkConnectionInterceptor
+import com.example.androiddemo.utils.NetworkConnectionInterceptor
 import com.example.androiddemo.data.network.SharedPref
 import com.example.androiddemo.data.reopsitories.LumperListRepository
 import com.example.androiddemo.data.reopsitories.ProfileRepository

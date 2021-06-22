@@ -4,6 +4,7 @@ import com.example.androiddemo.data.responses.LeadProfileAPIResponse
 import com.example.androiddemo.data.responses.LoginRequest
 import com.example.androiddemo.data.responses.LoginUserData
 import com.example.androiddemo.data.responses.UserList
+import com.example.androiddemo.utils.NetworkConnectionInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit

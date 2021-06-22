@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.androiddemo.data.reopsitories.LumperListRepository
 import com.example.androiddemo.data.responses.Data
-import com.example.androiddemo.listner.login.ViewModelListener
 import com.example.androiddemo.utils.ApiExceptions
 import com.example.androiddemo.utils.NoInternetException
 import com.example.androiddemo.utils.Resource

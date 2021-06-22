@@ -1,9 +1,8 @@
-package com.example.androiddemo.data.network
+package com.example.androiddemo.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import com.example.androiddemo.utils.NoInternetException
 import okhttp3.Interceptor
 import okhttp3.Response
 
