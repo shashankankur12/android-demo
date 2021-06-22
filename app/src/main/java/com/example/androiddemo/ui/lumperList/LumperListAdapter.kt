@@ -34,7 +34,7 @@ class LumperListAdapter :
         RecyclerView.ViewHolder(recycelrViewLumperBinding.root)
 
 
-    fun updateArrayList(lumperDataList: List<Data>){
+    fun updateArrayList(lumperDataList: List<Data>) {
         lumperList.clear()
         lumperList.addAll(lumperDataList)
         notifyDataSetChanged()

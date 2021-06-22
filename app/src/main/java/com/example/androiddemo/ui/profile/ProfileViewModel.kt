@@ -1,5 +1,6 @@
 package com.example.androiddemo.ui.profile
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,16 +11,12 @@ import com.example.androiddemo.listner.login.ViewModelListener
 import com.example.androiddemo.utils.ApiExceptions
 import com.example.androiddemo.utils.NoInternetException
 import com.example.androiddemo.utils.Resource
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(private val repository: ProfileRepository) : ViewModel() {
 
     private val profileData= MutableLiveData<Resource<Data>>()
-    var viewModelListener: ViewModelListener? = null
-
-//    val lumperList by lazyDeferred {
-//        repository.getLumperList()
-//    }
 
     fun getProfileData(): LiveData<Resource<Data>> {
        fetchProfileData()
@@ -28,7 +25,7 @@ class ProfileViewModel(private val repository: ProfileRepository) : ViewModel() 
 
     private fun fetchProfileData() {
         profileData.postValue(Resource.loading())
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = repository.fetchProfileData()
                 response?.also {

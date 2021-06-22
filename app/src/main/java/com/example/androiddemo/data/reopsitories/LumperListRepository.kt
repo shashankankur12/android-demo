@@ -5,7 +5,7 @@ import com.example.androiddemo.data.network.SafeApiRequest
 import com.example.androiddemo.data.network.SharedPref
 import com.example.androiddemo.data.responses.UserList
 
-class LumperListRepository(private val api: ApiInterFace, private val pref: SharedPref) :
+class LumperListRepository(private val api: ApiInterFace) :
     SafeApiRequest() {
     suspend fun fetchAllLumperData(): UserList? {
         return apiRequest {

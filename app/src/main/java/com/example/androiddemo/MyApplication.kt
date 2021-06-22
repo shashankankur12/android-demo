@@ -26,11 +26,11 @@ class MyApplication :Application(), KodeinAware {
         bind() from singleton { NetworkConnectionInterceptor(instance()) }
         bind() from singleton { ApiInterFace(instance()) }
         bind() from singleton { SharedPref(instance()) }
-        bind() from singleton { UserRepository(instance(), instance()) }
-        bind() from provider { LoginViewModelFactory(instance()) }
-        bind() from singleton { ProfileRepository(instance(), instance()) }
+        bind() from singleton { UserRepository(instance()) }
+        bind() from provider { LoginViewModelFactory(instance(), instance()) }
+        bind() from singleton { ProfileRepository(instance()) }
         bind() from provider { ProfileViewModelFactory(instance()) }
-        bind() from singleton { LumperListRepository(instance(), instance()) }
+        bind() from singleton { LumperListRepository(instance()) }
         bind() from provider { LumperListViewModelFactory(instance()) }
     }
 

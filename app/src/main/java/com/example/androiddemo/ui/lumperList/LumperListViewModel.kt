@@ -10,12 +10,11 @@ import com.example.androiddemo.listner.login.ViewModelListener
 import com.example.androiddemo.utils.ApiExceptions
 import com.example.androiddemo.utils.NoInternetException
 import com.example.androiddemo.utils.Resource
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class LumperListViewModel(private val repo: LumperListRepository) : ViewModel() {
     private val lumpersList = MutableLiveData<Resource<List<Data>>>()
-
-//    val lumperList by lazyDeferred { repo.getLumperList() }
 
     fun getLumperList(): LiveData<Resource<List<Data>>> {
         fetchLumpersList()
@@ -24,7 +23,7 @@ class LumperListViewModel(private val repo: LumperListRepository) : ViewModel() 
 
     private fun fetchLumpersList() {
         lumpersList.postValue(Resource.loading())
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = repo.fetchAllLumperData()
                 response?.also {
@@ -43,5 +42,4 @@ class LumperListViewModel(private val repo: LumperListRepository) : ViewModel() 
             }
         }
     }
-
 }

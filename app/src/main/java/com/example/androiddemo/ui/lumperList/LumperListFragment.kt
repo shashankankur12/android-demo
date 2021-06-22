@@ -61,7 +61,6 @@ class LumperListFragment : Fragment(), KodeinAware {
 
     private fun setUpRecyclerView() {
         binding.recyclerViewLumper.apply {
-            layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
             lumperListAdapter = LumperListAdapter()
             adapter = lumperListAdapter

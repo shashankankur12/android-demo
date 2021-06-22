@@ -20,7 +20,6 @@ import org.kodein.di.generic.instance
 class LoginActivity : AppCompatActivity(), KodeinAware {
     override val kodein by kodein()
     private val factory: LoginViewModelFactory by instance()
-
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
 
@@ -28,9 +27,24 @@ class LoginActivity : AppCompatActivity(), KodeinAware {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this@LoginActivity, R.layout.activity_login)
         viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
-
-        binding.viewModelLogin = viewModel
         setDataObserver()
+
+        buttonLogin.setOnClickListener {
+            val userId = editTextEmployeeId.text.toString().trim()
+            val password = editTextPassword.text.toString().trim()
+            when {
+                userId.isNullOrEmpty() -> {
+                    mainRootLayout.snackbar("Please enter UserId")
+                }
+                password.isNullOrEmpty() -> {
+                    mainRootLayout.snackbar("Please enter Password")
+                }
+                else -> {
+                    viewModel.onSignInButtonClick(userId, password)
+
+                }
+            }
+        }
     }
 
     private fun setDataObserver() {
@@ -54,5 +68,4 @@ class LoginActivity : AppCompatActivity(), KodeinAware {
             }
         })
     }
-
 }
