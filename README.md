@@ -1,4 +1,6 @@
 This repository contains a sample app that implements MVVM architecture using coroutines, kodin, View binding.
+
+
 ![Alt text](device-2021-06-22-103147.gif)
 
 <h3>The app has following packages:</h3>
